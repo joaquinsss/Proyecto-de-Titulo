@@ -1,6 +1,8 @@
+<center>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <body background="fondo1.jpg" bgcolor="FFCECB"></body>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,12 +24,12 @@
       
         // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyBxPaACdxq0jbFPFFsoyWpmf78-adrQ83Q",
-          authDomain: "loginfirebase-53bee.firebaseapp.com",
-          projectId: "loginfirebase-53bee",
-          storageBucket: "loginfirebase-53bee.appspot.com",
-          messagingSenderId: "561684584968",
-          appId: "1:561684584968:web:7e51e5df8933d82844cfbd"
+            apiKey: "AIzaSyCngUHw_r6Rs-TWcv9NL8-4qDL_XpFZUWQ",
+            authDomain: "signup-7ed08.firebaseapp.com",
+            projectId: "signup-7ed08",
+            storageBucket: "signup-7ed08.appspot.com",
+            messagingSenderId: "527860704163",
+            appId: "1:527860704163:web:c23025b09b67ed3e9b7016"
         };
       
         // Initialize Firebase
@@ -50,9 +52,11 @@
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode + errorMessage);
+                window.alert("El Usuario ya existe");
                 // ..
             });
         })
       </script>
 </body>
 </html>
+</center>
