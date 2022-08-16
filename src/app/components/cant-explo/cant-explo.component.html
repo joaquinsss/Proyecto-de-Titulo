@@ -67,47 +67,58 @@
 </div>
 
 <body>
-   
+   <div><app-navbar></app-navbar> </div>
+   <h1>Consumo de Explosivos </h1>
+   <br>
+    
  
-    <form id="calculo-explo" method="post">
-        <div class="position-absolute top-50 start-50 translate-middle">
+    <form id="calculo-explo" method="post" class="form"  style=" margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center">
+        
             <div class="list-group" id="ssss">
 
-                <h1>Consumo de Explosivos</h1>
-                <br>
                 
                 
-                <input type="number" id="densidad" >
+                
+                <input type="number" id="densidad" required>
 
                 <p>Densidad del Explosivo (gr/cc)</p>
 
-                <input type="number" id="diametro" >
+                <input type="number" id="diametro" required >
                 
                 <p>Diametro del pozo (Pulgadas)</p>
               
                 
-                <input type="number" id="Altura-b" >
+                <input type="number" id="Altura-b" required >
 
                 <p>Altura del Banco (m)</p>
 
-                <input type="number" id="pasadura" >
+                <input type="number" id="pasadura" required>
 
                 <p>Altura Pasadura (m)</p>
 
-                <input type="number" id="taco" >
+                <input type="number" id="taco" required>
 
                 <p>Altura Taco (m)</p>
               
                 
                 
-                <button type="button" id="calculars" class="btn btn-primary" (click)="createee();">Obtener Resultados</button> 
+                <button type="submit" id="calculars" class="btn btn-primary"    (click)="createee()" >Obtener Resultados</button> 
                 <br>
+            
+                
+                
                 <button type="button" id="limpiars" class="btn btn-danger" onclick="document.getElementById('calculo-explo').reset();">Limpiar Campos</button>
                 <br>
                 <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Ayuda
                     </button>
+                    <br>
+                  <!--   <input (change)="subirPdf($event)" class="form-control form-control-sm" id="formFileSm" type="file">-->
                     
 
                 
@@ -116,10 +127,14 @@
                 
                        
             </div>
+            <div>
               
-        </div>
+              
+            </div>
+              
+        
 
-        <app-navbar></app-navbar>        
+               
     </form>
     
    

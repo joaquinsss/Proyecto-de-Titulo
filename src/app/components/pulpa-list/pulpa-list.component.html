@@ -1,0 +1,20 @@
+
+    <div class="formularios" *ngFor="let formulario of formularios" style="margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    position: relativea;">
+        <div class="box" >
+            
+            Nº Muestra = {{formulario.muestra}} <br> Porcentaje Solido = {{formulario.porcentaje}}% <br> Hora = {{formulario.hora}}
+            <button class="btn btn-outline-danger" (click)="onClickDelete(formulario)">Borrar</button>
+        </div>
+        
+        
+        
+            
+    </div>
+    

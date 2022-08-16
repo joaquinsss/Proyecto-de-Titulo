@@ -27,6 +27,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 // service
 import { AuthService } from './shared/services/auth.service';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { ArchivosComponent } from './components/archivos/archivos.component';
+import { PulpaComponent } from './components/pulpa/pulpa.component';
+import { PulpaListComponent } from './components/pulpa-list/pulpa-list.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 
 
@@ -41,17 +48,25 @@ import { AuthService } from './shared/services/auth.service';
     VerifyEmailComponent,
     CantExploComponent,
     NavbarComponent,
+    ArchivosComponent,
+    PulpaComponent,
+    PulpaListComponent,
    
    
   ],
   imports: [
     BrowserModule,
+    FormsModule ,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

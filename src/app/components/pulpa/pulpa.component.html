@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Menu</title>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='pulpa.component.scss'>
+
+</head>
+
+<body >
+    <div>
+        <app-navbar></app-navbar> 
+
+    </div>
+    <br>
+    <br>
+
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form"  >
+        
+            <div class="mb-3">
+                <label class="form-label" > Muestra</label>
+                <input  type="number" class="form-control" formControlName="muestra"required >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Porcentaje</label>
+                <input type="number" class="form-control" formControlName="porcentaje" required >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Hora</label>
+                <input type="time" class="form-control" formControlName="hora" required  >
+            </div>
+            
+            <div>
+                <input class="btn btn-primary btn-lg" type="submit" value="Subir" required >
+            </div>
+        
+        
+        
+    
+        
+    </form>
+    <br>
+    
+    <div class="form">
+       <app-pulpa-list></app-pulpa-list>
+    </div>
+  
+
+
+   
+    
+    
+</body>
+</html>
+

@@ -9,8 +9,11 @@ import { CantExploComponent } from './components/cant-explo/cant-explo.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 
+
 // route guard
 import { AuthGuard } from './shared/guard/auth.guard';
+import { ArchivosComponent } from './components/archivos/archivos.component';
+import { PulpaComponent } from './components/pulpa/pulpa.component';
 
 
 
@@ -20,6 +23,8 @@ const routes: Routes = [
   { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'navbar', component:NavbarComponent, canActivate: [AuthGuard] },
+  { path: 'archivos', component: ArchivosComponent,canActivate: [AuthGuard] },
+  { path: 'pulpa', component: PulpaComponent,canActivate: [AuthGuard] },
   { path: 'cant-explo', component: CantExploComponent,canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },

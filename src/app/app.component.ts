@@ -7,7 +7,10 @@ import { Component } from '@angular/core';
   
 })
 export class AppComponent {
-  title = 'angularfiebase-authentication';
+  title = 'angularfiebase-authentication'
+  title2= 'storage'
+  
+
  
   
   
