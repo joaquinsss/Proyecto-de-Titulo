@@ -1,6 +1,6 @@
-# Angular 13 Authentication with Firebase
+# Angular 13 And Firebase
 
-VERSION 1.2.0 MyM
+VERSION 1.3.0 MyM
 
 
 lo gin =
@@ -18,11 +18,21 @@ lo gin =
 Menu = dirijase al icono de menu en la esquina superior derecha de la app-web
 
 - El menu se compone por un navbar que nos permite navegar por los diferentes formularios disponibles. tanto mineros como metalurgicos
-- Actualmente existe solo un protoripo de formulario el cual  es el componente "cant-explo" que nos permite calcular la cantidad de explosivos necesario par auna tronadura.
-        -para calcular la cantidad de explosivos basta con introducir llos datos que se piden en sus unidades correspondientas y darle al botn de obtener resultado.
+- Actualmente existe solo un protoripo de formulario el cual  es el componente "cant-explo" que nos permite calcular la cantidad de explosivos necesario par una tronadura.
+      
+
+Obtener PDF=
+
+- ingresar al formulario "cant-explo" completar todos los campos correctamente
+-para calcular la cantidad de explosivos basta con introducir los datos que se piden en sus unidades correspondientas y darle al boton de obtener resultado.
         -continuo a la anterior se genrara unn pdf con el resultado obtenido.
         - si necesita ayuda puede recurrir al boton de ayuda que dsplegara un glosario de los datos que se piden.
         si desea limpiar los datos existe un boton para ello.
 
 
+Subir PDF= 
+- Primero que todo debe descargar el pdf generado por la App.
+- En el formulario donde se trabajo existe un una funcionalidad que perrmite subir archivos a firebase Storage.
+- Seleccione el PDF creado anteriormente.
+- El archivo se subira automaticamente a firebase Storage.
 
