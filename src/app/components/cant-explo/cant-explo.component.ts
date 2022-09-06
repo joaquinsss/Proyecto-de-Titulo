@@ -42,9 +42,34 @@ export class CantExploComponent implements OnInit {
   
     
   }
+  //TRANSFORM IMAGE BASE 64
+  getBase64ImageFromURL(url) {
+    return new Promise((resolve, reject) => {
+      var img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
+    
+      img.onload = () => {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+    
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+    
+        var dataURL = canvas.toDataURL("image/png");
+    
+        resolve(dataURL);
+      };
+    
+      img.onerror = error => {
+        reject(error);
+      };
+    
+      img.src = url;
+    });}
   
-
-  createee(){
+    // generate and upload PDF
+  async createee(){
 
     const densidad = parseFloat((<HTMLInputElement>document.getElementById("densidad")).value);
     const diametro = parseFloat((<HTMLInputElement>document.getElementById("diametro")).value);
@@ -52,20 +77,69 @@ export class CantExploComponent implements OnInit {
     const pasadura= parseFloat((<HTMLInputElement>document.getElementById("pasadura")).value);
     const taco= parseFloat((<HTMLInputElement>document.getElementById("taco")).value);
     const resultado = ((alturab + pasadura) - taco) * ((diametro * diametro) * densidad * 0.507) ;
-
-    if (isNaN(resultado) ) {
-      alert("Faltan campos");}
+    
+    if (isNaN(resultado) || (taco >= alturab + pasadura)  ) {
+      alert("Faltan campos O la suma de la altura del banco y la pasadura es menor o igual al taco");}
+     
+      
 
       else { 
         
         const pdfDefinition: any = { 
+          background:  {
+            image: await this.getBase64ImageFromURL(
+              "./assets/plantilla1.jpg" ,
+              
+            ),
+            width: 600,
+            height: 600,
+            alignment: 'center'
+          } ,
           content: [
-            'Densidad =  ' + densidad + '  [g/cc]',
-            'Diametro =  ' + diametro + '  [pulgadas]',
-            'Altura banco =  ' + alturab + '  [metros]',
-            'Pasadura =  ' + pasadura + '  [metros]',
-            'Taco =  ' + taco + '  [metros]',
-            'Cantidad de Explosivo necesario =  ' + resultado + '  [kg de explosivos]',
+           
+            '-Diametro =  ' + diametro + '  [in]',
+            '-                                                                                                               -------------------------------> Taco = ' + taco + '  [m]',
+            '-   Densidad =  ' + densidad + '  [g/cc]',
+            '                      ',
+            '              ',
+            '             ',
+            '          ',
+            '          ',
+            '        ',
+            '        ',
+            '            ',
+            '-                                                                                                                                  Altura banco =  ' + alturab + '  [m]',
+            '              ',
+            '             ',
+            '          ',
+            '          ',
+            '        ',
+            '        ',
+            '              ',
+            '             ',
+            '          ',
+            
+            '          ',
+            '        ',
+            '        ',
+            '              ',
+            '             ',
+            '          ',
+            '          ',
+            '        ',
+            '        ','              ',
+            '             ',
+           
+          
+            '-                          Pasadura =  ' + pasadura + '  [m] <----------',
+            
+            '          ',
+            '          ',
+            '        ',
+            '        ',
+            'Cantidad de Explosivo =  ' + resultado + '  [kg]',
+            
+           
             
           ]
 
@@ -83,8 +157,8 @@ export class CantExploComponent implements OnInit {
         };
   
   
-        //const pdf = pdfMake.createPdf(pdfDefinition).open().end();
         
+        //pdf url generate
         const pdfDocGenerator = pdfMake.createPdf(pdfDefinition);
         pdfDocGenerator.getDataUrl((dataUrl: any) => {
 	      
@@ -92,10 +166,10 @@ export class CantExploComponent implements OnInit {
 	      iframe.src = dataUrl;
         
         const storageRef = ref(this.storage,`pdf/${iframe} `+  Date.now() ) ;    
-        
-        uploadString(storageRef, iframe.src, 'data_url').then((snapshot) => {
-          console.log('Uploaded a data_url string!');
-        });
+       //upload PDF 
+       uploadString(storageRef, iframe.src, 'data_url').then((snapshot) => {
+       console.log('Uploaded a data_url string!');
+       });
         pdfDocGenerator.download();
 
        

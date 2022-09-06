@@ -14,7 +14,7 @@ export class PulpaComponent implements OnInit {
   constructor(public authService: AuthService,private formulariosService: FormulariosService) { 
     this.formulario = new FormGroup({
 
-      muestra: new FormControl(Validators.required),
+      muestra: new FormControl,
       porcentaje: new FormControl(Validators.required),
       hora: new FormControl(Validators.required),
       

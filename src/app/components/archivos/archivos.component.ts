@@ -26,7 +26,7 @@ export class ArchivosComponent implements OnInit {
   ngOnInit(): void {
     this.getpdf();
   }
-
+  //LIST PDF
   getpdf() {
     const pdfRef = ref(this.storage, 'pdf');
 
@@ -39,6 +39,7 @@ export class ArchivosComponent implements OnInit {
         
         
         console.log(url);
+        //BYPASS URL FIREBATE TO ANGULAR
         this.pdf.push(this.domSanitizer.bypassSecurityTrustResourceUrl(url));
       }
 

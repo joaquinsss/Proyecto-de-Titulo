@@ -9,6 +9,93 @@
     <link rel='stylesheet' type='text/css' media='screen' href='pulpa.component.scss'>
 
 </head>
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ayuda</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p> 
+            Esta herramienta permitirá obtener la cantidad de explosivo a cargar en un pozo de tronadura.
+              Para ello es necesario conocer los siguientes conceptos que pedirá el formulario:
+              <br>
+              <br>
+  
+              <u>Densidad del explosivo:</u>  Este parámetro es preestablecido y depende de cada explosivo a continuación se dan las densidades más utilizadas.
+              <br>
+              <br>
+  
+              Dinamita: 1.14 (g/cc)
+              <br>
+              <br>
+              ANFO: 0.8 (g/cc)
+              <br>
+              <br>
+              ANFO Pesado: 1,23 (g/cc ) (puede variar según faena)
+              <br>
+              <br>
+  
+              <u>Diámetro del pozo:</u>  generalmente es la medida de la broca utilizada para perforar, el diámetro se utiliza en pulgadas.
+              <br>
+              <br>
+              <u>Altura del Banco:</u> Un banco es un Escalón o unidad de explotación sobre la que se desarrolla el trabajo de extracción en las minas a cielo abierto.  La medida del banco va en metros
+              <br>
+              <br>
+              <u>Pasadura:</u> La pasadura, considerada como sobre perforación, perforación que sobrepasa el nivel de banco o nivel horizontal esperado, a fin lograr con mucho mayor existo la construcción y mantención de los futuros sectores de carguío y transporte. Sus rangos pueden variar y son exclusivos de la realidad especifica de cada mina pudiendo ser estos de entre 10% hasta un 20% de la altura de banco, lo que habitualmente se denomina control de sobre piso.
+              <br>
+              <br>
+              <u>Altura Taco:</u> El taco, el sección del pozo que no lleva carga , comúnmente encontrada en la parte superior del pozo aun cuando en ocasiones existen los tacos intermedios , la operación de taqueado de pozo habitualmente se llama TAPADO DE POZOS y consiste en rellenar el pozo sin cortar y/o dañar el sistema de iniciación del pozo, con material inerte muchas veces siendo este el mismo material proveniente de la perforación (detritus), el fin de este es confinar las cargas explosivas para así poder aprovechar la liberación de energía en la fragmentación y desplazamiento de la roca.
+  
+          </p>
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div><!-- Modal -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ayuda</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p> 
+          Esta herramienta permitirá guardar  las muestras de pulpa que tomas en terreno:
+            <br>
+            <br>
+
+            <u>Muestra:</u>  Asígnale un nombre o número a tu muestra
+            <br>
+            <br>
+          
+
+            <u>Porcentaje de sólido:</u>  Relación entre el peso del sólido y el peso total de la pulpa, expresada en porcentaje, generalmente medida por la balanza de Marcy.
+            <br>
+            <br>
+            <u>Hora:</u> Selecciona la hora en que fue tomada la muestra.
+            <br>
+            
+            
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
 <body >
     <div>
@@ -22,10 +109,10 @@
         
             <div class="mb-3">
                 <label class="form-label" > Muestra</label>
-                <input  type="number" class="form-control" formControlName="muestra"required >
+                <input  type="text" class="form-control" formControlName="muestra" >
             </div>
             <div class="mb-3">
-                <label class="form-label">Porcentaje</label>
+                <label class="form-label">Porcentaje de Sólido</label>
                 <input type="number" class="form-control" formControlName="porcentaje" required >
             </div>
             <div class="mb-3">
@@ -34,19 +121,54 @@
             </div>
             
             <div>
-                <input class="btn btn-primary btn-lg" type="submit" value="Subir" required >
-            </div>
+                <input class="btn btn-primary btn-lg" type="submit" value="Subir" required > ' '
+
         
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                  Ayuda
+              </button>
+            </div>
+            <br>
+            
+            
         
         
     
         
     </form>
-    <br>
     
-    <div class="form">
-       <app-pulpa-list></app-pulpa-list>
-    </div>
+    <br>
+
+            <style type="text/css">
+                #global {
+                    height: 300px;
+                    width: 200px;
+                    border: 1px solid #ddd;
+                    background: #f1f1f1;
+                    overflow-y: scroll;
+                    margin: 0 auto;
+                    
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #mensajes {
+                    height: auto;
+                }
+                .texto {
+                    padding:4px;
+                    background:#fff;
+                }
+                </style>
+                <div id="global">
+                  <div id="mensajes">
+                    <app-pulpa-list></app-pulpa-list>
+                    
+                  </div>
+                </div>
+        
+    
+    
   
 
 
